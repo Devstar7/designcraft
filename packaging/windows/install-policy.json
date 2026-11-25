@@ -1,6 +1,7 @@
 {
   "id": "designcraft",
   "name": "STAR Design",
+  "registryName": "DesignCraft",
   "upgradeCode": "49E87D30-BB68-4896-AA1D-F45C833CFC3C",
   "sources": [
     "designcraft.wxs",
