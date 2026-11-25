@@ -30,5 +30,5 @@ including the completion screen. Its quiet command and direct `/qn`, `/qb`, `/pa
 remain unattended. The main feature references `CraftInstallerSettings`; the shared snapshot
 owns this registration and hides the native MSI entry while retaining MSI repair/upgrade APIs.
 
-The Settings display name appends `(Craft Apps)` for compatibility with older Launchers; the
+The Settings display name is the plain product name (STAR7: no `(Craft Apps)` suffix); the
 hidden native MSI name stays unchanged. Existing ARP Modify policy is retained explicitly.

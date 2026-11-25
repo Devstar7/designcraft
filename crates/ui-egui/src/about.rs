@@ -182,18 +182,14 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
             ui.add_space(4.0);
             ui.label(crate::rtl::widget(
                 ui,
-                egui::RichText::new(crate::i18n::tr(&app.ui.language, "suite.star-7.app.br — STAR7 Suite"))
-                    .size(11.0)
-                    .color(t.text_dim),
+                egui::RichText::new(crate::i18n::tr(&app.ui.language, "suite.star-7.app.br — STAR7 Suite")).size(11.0).color(t.text_dim),
             ));
             ui.add_space(14.0);
             ui.horizontal(|ui| {
                 // Centre the row of links.
                 let w = 330.0;
                 ui.add_space(((ui.available_width() - w) / 2.0).max(0.0));
-                for (text, key) in
-                    [("STAR Design page", "appPage"), ("suite.star-7.app.br", "website"), ("Report an issue", "issues")]
-                {
+                for (text, key) in [("STAR Design page", "appPage"), ("suite.star-7.app.br", "website"), ("Report an issue", "issues")] {
                     if link(ui, crate::i18n::tr(&app.ui.language, text), links::get(key).unwrap_or_default(), t.accent) {
                         open = Some(key);
                     }

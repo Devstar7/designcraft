@@ -217,4 +217,3 @@ fn recent_preview_texture(ctx: &egui::Context, path: &str, modified: Option<std:
     ctx.data_mut(|d| d.insert_temp::<Cached>(key, (modified, tex.clone())));
     tex
 }
-

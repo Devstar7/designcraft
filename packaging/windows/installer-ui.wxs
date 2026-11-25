@@ -202,7 +202,7 @@
       <Component Id="CraftInstallerSettingsEntry" Guid="*">
         <RegistryKey Root="HKMU" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\Craft.designcraft" ForceDeleteOnUninstall="yes">
           <!-- Legacy Launchers match the canonical MSI name exactly; keep this alias distinct. -->
-          <RegistryValue Name="DisplayName" Type="string" Value="[ProductName] (Craft Apps)" KeyPath="yes" />
+          <RegistryValue Name="DisplayName" Type="string" Value="[ProductName]" KeyPath="yes" />
           <RegistryValue Name="DisplayVersion" Type="string" Value="[ProductVersion]" />
           <RegistryValue Name="Publisher" Type="string" Value="[Manufacturer]" />
           <RegistryValue Name="DisplayIcon" Type="string" Value="&quot;[INSTALLFOLDER]designcraft.exe&quot;,0" />
