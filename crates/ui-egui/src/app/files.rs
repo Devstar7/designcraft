@@ -293,7 +293,7 @@ impl DesignApp {
         let layout = opens_as_document(&file.name)
             || matches!(
                 format,
-                Some(craft_file_formats::Format::STAR Design | craft_file_formats::Format::STAR DesignJson | craft_file_formats::Format::Idml)
+                Some(craft_file_formats::Format::DesignCraft | craft_file_formats::Format::DesignCraftJson | craft_file_formats::Format::Idml)
             );
         let place = file.request.purpose == "place"
             || (matches!(file.request.purpose.as_str(), "drop" | "open") && !layout && format != Some(craft_file_formats::Format::Ase));
@@ -588,7 +588,7 @@ pub(crate) fn is_cursor_image(name: &str) -> bool {
 pub fn opens_as_document(name: &str) -> bool {
     matches!(
         craft_file_formats::detect(name, &[]),
-        Some(craft_file_formats::Format::STAR Design | craft_file_formats::Format::Idml | craft_file_formats::Format::Indd)
+        Some(craft_file_formats::Format::DesignCraft | craft_file_formats::Format::Idml | craft_file_formats::Format::Indd)
     )
 }
 
