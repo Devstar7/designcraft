@@ -62,7 +62,7 @@ struct DesignCraftTools {
 impl Tools for DesignCraftTools {
     fn instructions(&self) -> String {
         format!(
-            "{INSTRUCTIONS} Backend: {}. Community: {} (Discord), {} (app page), {} (source). The `app.links` command returns these links.",
+            "{INSTRUCTIONS} Backend: {}. Community: {} (STAR7 portal), {} (app page), {} (source). The `app.links` command returns these links.",
             self.backend.describe(),
             designcraft_engine::links::DISCORD,
             designcraft_engine::links::APP_PAGE,
