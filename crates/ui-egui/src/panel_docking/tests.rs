@@ -1043,7 +1043,7 @@ fn hits(h: &Harness<'static, DesignApp>) -> Vec<(craft_ui::docking::Hit<String>,
     craft_ui::docking::DockArea::<String>::hit_rects(&h.ctx, area_id())
 }
 
-/// `window.panel.*` ids and DesignCraft's aliases go through craft-ui's `DockCommand`.
+/// `window.panel.*` ids and STAR Design's aliases go through craft-ui's `DockCommand`.
 #[test]
 fn shared_panel_commands_float_dock_and_reject_atomically() {
     let mut app = app();
@@ -1206,7 +1206,7 @@ fn a_canvas_click_leaves_an_open_flyout_open() {
     assert!(!saved.dock_auto_collapse, "the older key is not read");
 }
 
-/// Iconic columns paint DesignCraft's own panel icons, in the colour craft-ui passes; a panel
+/// Iconic columns paint STAR Design's own panel icons, in the colour craft-ui passes; a panel
 /// without an icon paints nothing.
 #[test]
 fn panel_icons_are_painted_in_code() {
@@ -1228,7 +1228,7 @@ fn panel_icons_are_painted_in_code() {
     assert_eq!(paint(CANVAS), (false, 0));
 }
 
-/// Every docking label in DesignCraft's wording is translated in the shared catalog's languages.
+/// Every docking label in STAR Design's wording is translated in the shared catalog's languages.
 #[test]
 fn docking_labels_are_translated() {
     for language in ["de", "fr", "es", "ja", "zh"] {
@@ -1238,7 +1238,7 @@ fn docking_labels_are_translated() {
     }
 }
 
-/// With DesignCraft's title bar under macOS's transparent one, a floating window saved in the
+/// With STAR Design's title bar under macOS's transparent one, a floating window saved in the
 /// title-bar strip is drawn below it, where its title bar can't move the app window.
 #[test]
 fn a_floating_window_saved_in_the_title_bar_strip_is_drawn_below_it() {

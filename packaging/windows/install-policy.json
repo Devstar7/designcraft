@@ -1,6 +1,6 @@
 {
   "id": "designcraft",
-  "name": "DesignCraft",
+  "name": "STAR Design",
   "upgradeCode": "49E87D30-BB68-4896-AA1D-F45C833CFC3C",
   "sources": [
     "designcraft.wxs",
@@ -31,7 +31,7 @@
       "-1",
       "Software\\Classes\\Applications\\designcraft.exe",
       "FriendlyAppName",
-      "DesignCraft"
+      "STAR Design"
     ],
     [
       "-1",

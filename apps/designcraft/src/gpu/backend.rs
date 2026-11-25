@@ -21,7 +21,7 @@
 //! meanwhile — so that backend joins `failed`, the next candidate is tried and the status bar says
 //! so. Backends a restart left out (`--gpu-skip=`, see `gpu`) aren't chosen for that start but
 //! aren't recorded: the restart caught their failure, and a later launch may try them again. When
-//! every candidate has failed the list starts over, and so does a new DesignCraft version (drivers
+//! every candidate has failed the list starts over, and so does a new STAR Design version (drivers
 //! and wgpu move on). `DESIGNCRAFT_NO_PREFS` records nothing.
 
 use std::path::{Path, PathBuf};
@@ -106,7 +106,7 @@ pub fn candidates() -> &'static [Backend] {
 /// What `gpu.json` holds.
 #[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Record {
-    /// The DesignCraft version that wrote the record; another version starts afresh.
+    /// The STAR Design version that wrote the record; another version starts afresh.
     #[serde(default)]
     pub version: String,
     /// The backend of a start that has not presented a frame yet.

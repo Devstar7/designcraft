@@ -1,4 +1,4 @@
-//! DesignCraft desktop app.
+//! STAR Design desktop app.
 //!
 //! Usage: `designcraft [--control <port>] [--sample] [files…]`
 //!
@@ -173,7 +173,7 @@ fn prefs_path() -> Option<std::path::PathBuf> {
 static KEEP_UI_PREFS: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
 
 /// Copy an unreadable (or partly unreadable) `ui.json` beside it, as `ui.unreadable.json` or the
-/// first free `ui.unreadable-N.json`, before the next save replaces it. A newer DesignCraft may
+/// first free `ui.unreadable-N.json`, before the next save replaces it. A newer STAR Design may
 /// have written it.
 fn keep_unreadable_prefs(path: &std::path::Path, bytes: &[u8]) {
     use std::io::Write as _;
@@ -301,11 +301,11 @@ fn desktop_session() -> bool {
 /// A Nightly launch that is refused before the window: say why where the user looks.
 #[allow(clippy::disallowed_types, reason = "native refusal before any window exists")]
 fn report_launch_profile_error(error: &str) {
-    eprintln!("DesignCraft launch profile: {error}");
+    eprintln!("STAR Design launch profile: {error}");
     if build_flavor::needs_native_error(build_flavor::COMPILED, desktop_session()) {
         // Before any window exists, so this is not the in-frame dialog clippy.toml forbids.
         let _ = rfd::MessageDialog::new()
-            .set_title("DesignCraft Nightly")
+            .set_title("STAR Design Nightly")
             .set_description(error)
             .set_level(rfd::MessageLevel::Error)
             .set_buttons(rfd::MessageButtons::Ok)
@@ -475,7 +475,7 @@ fn main() -> std::process::ExitCode {
             .with_fullsize_content_view(true)
             .with_titlebar_shown(false)
             .with_title_shown(false),
-        // DesignCraft's own FontDb supplies script-specific system fallbacks; egui's system-font
+        // STAR Design's own FontDb supplies script-specific system fallbacks; egui's system-font
         // provider would put its discovery ahead of that order and change line metrics.
         system_font_fallback: false,
         ..Default::default()
@@ -557,7 +557,8 @@ fn main() -> std::process::ExitCode {
     // A panic that ends the window (egui-wgpu's own) is caught here: never a crash.
     let run = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         eframe::run_native(
-            designcraft_ui_egui::channel::name(),
+            // Storage id kept as before so existing settings survive the rename.
+            "DesignCraft",
             options,
             Box::new(move |cc| {
                 let mut restarted = None;
@@ -586,7 +587,7 @@ fn main() -> std::process::ExitCode {
                         // A processor chosen by `WGPU_POWER_PREF` can be the one that can't show the window.
                         let hint = if chosen_gpu { " (without WGPU_POWER_PREF it uses the one that drives your display)" } else { "" };
                         restarted = Some(format!(
-                            "The graphics processor tried first couldn't show the window, so DesignCraft started again on {} ({:?}, {:?}){hint}.",
+                            "The graphics processor tried first couldn't show the window, so STAR Design started again on {} ({:?}, {:?}){hint}.",
                             info.name.trim(),
                             info.backend,
                             info.device_type
@@ -602,7 +603,8 @@ fn main() -> std::process::ExitCode {
                     // Installed and updated by the Launcher: never check the stable feed from here.
                     app.set_updates_managed(Some("ArtCraft Launcher"));
                 } else {
-                    app.set_startup_update_check(true);
+                    // STAR7: updates are distributed by the STAR7 Suite portal, never the upstream feed.
+                    app.set_updates_managed(Some("Portal STAR7 Suite"));
                 }
                 if let Some(line) = restarted.or_else(|| created.status_line()) {
                     app.status(line);
@@ -619,9 +621,9 @@ fn main() -> std::process::ExitCode {
                 // Last, so the interruption is the line the user reads. Showing it is also what
                 // lets this session clear the record instead of passing it on.
                 if unclean_notice_shown {
-                    app.status("DesignCraft Nightly did not close cleanly last time. Recovered documents are listed below.");
+                    app.status("STAR Design Nightly did not close cleanly last time. Recovered documents are listed below.");
                 } else if session_unavailable && nightly {
-                    log::warn!("another DesignCraft Nightly holds this profile's session record");
+                    log::warn!("another STAR Design Nightly holds this profile's session record");
                 }
                 app.integrated_titlebar = cfg!(target_os = "macos");
                 app.custom_titlebar = cfg!(target_os = "windows");
@@ -671,7 +673,7 @@ fn main() -> std::process::ExitCode {
     match gpu::finish(run, &startup) {
         Ok(()) => std::process::ExitCode::SUCCESS,
         Err(e) => {
-            log::error!("DesignCraft stopped: {e}");
+            log::error!("STAR Design stopped: {e}");
             std::process::ExitCode::FAILURE
         }
     }

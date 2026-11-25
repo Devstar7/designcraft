@@ -86,8 +86,8 @@ fn main() {
     }
     let mut res = winresource::WindowsResource::new();
     res.set_icon(build_channel::windows_icon_path(nightly))
-        .set("ProductName", if nightly { "DesignCraft Nightly" } else { "DesignCraft" })
-        .set("FileDescription", if nightly { "DesignCraft Nightly page layout" } else { "DesignCraft page layout" })
+        .set("ProductName", if nightly { "DesignCraft Nightly" } else { "STAR Design" })
+        .set("FileDescription", if nightly { "DesignCraft Nightly page layout" } else { "STAR Design page layout" })
         .set("CompanyName", "Learning Machines LLC")
         .set("LegalCopyright", "Copyright (c) the DesignCraft authors. MIT OR Apache-2.0.")
         .set("OriginalFilename", "designcraft.exe")

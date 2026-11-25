@@ -69,7 +69,7 @@ pub(crate) fn extract_text(bytes: &[u8]) -> Vec<String> {
 
 #[test]
 fn exports_valid_pdf_with_one_page_per_page() {
-    let d = doc_with_text("Hello DesignCraft");
+    let d = doc_with_text("Hello STAR Design");
     let bytes = export_pdf(&d, &Cache::new(), &PdfOptions::default()).unwrap();
     assert!(bytes.starts_with(b"%PDF-1.7"));
     let pdf = craft_pdf::syntax::Pdf::new(bytes.clone()).expect("parse");
@@ -100,7 +100,7 @@ fn discretionary_hyphen_pdf_text_follows_visible_breaks() {
 
 #[test]
 fn text_is_real_text() {
-    let d = doc_with_text("Hello DesignCraft — efficient affine");
+    let d = doc_with_text("Hello STAR Design — efficient affine");
     let s = uncompressed(&d, PdfOptions::default());
     assert!(s.contains("/FontFile2") || s.contains("/FontFile3"), "font embedded");
     assert!(s.contains("/ToUnicode"));
@@ -109,7 +109,7 @@ fn text_is_real_text() {
     let text = extract_text(&bytes);
     let flat: String = text[0].split_whitespace().collect::<Vec<_>>().join(" ");
     assert!(flat.contains("Hello"), "{flat}");
-    assert!(text[0].contains("DesignCraft"), "{text:?}");
+    assert!(text[0].contains("STAR Design"), "{text:?}");
     assert!(text[0].contains("efficient") && text[0].contains("affine"), "ligatures map back: {text:?}");
 }
 
@@ -678,7 +678,7 @@ fn missing_glyphs_print_as_boxes() {
     assert_eq!(boxes(&paths), 1, "{paths:?}");
     let a = export_pdf_with_report(&d, &Cache::new(), &PdfOptions { standard: Standard::PdfA2b, ..Default::default() });
     assert!(a.is_ok(), "PDF/A takes the box: {:?}", a.err());
-    // A font whose .notdef is empty: the box DesignCraft draws for it.
+    // A font whose .notdef is empty: the box STAR Design draws for it.
     const FAMILY: &str = "DC Test PDF Empty Notdef";
     let font = designcraft_fonts::testing::font_mapping(FAMILY, &[('a', 'a'), ('b', 'b')]).unwrap();
     designcraft_fonts::FontDb::global().add_font(designcraft_fonts::testing::with_empty_notdef(font).unwrap());

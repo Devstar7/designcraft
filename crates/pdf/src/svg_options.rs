@@ -1,4 +1,4 @@
-//! DesignCraft font selection for the PDF writer's SVG parser.
+//! STAR Design font selection for the PDF writer's SVG parser.
 
 use std::sync::{Arc, OnceLock};
 
@@ -23,7 +23,7 @@ fn svg_fontdb() -> Arc<usvg::fontdb::Database> {
     .clone()
 }
 
-/// SVG options with DesignCraft's font database and family/PostScript fallback policy.
+/// SVG options with STAR Design's font database and family/PostScript fallback policy.
 /// The PDF adapter uses these same font choices while owning its separate parser.
 pub(crate) fn svg_options_for_pdf() -> usvg::Options<'static> {
     usvg::Options {

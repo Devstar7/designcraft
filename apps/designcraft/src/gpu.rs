@@ -24,7 +24,7 @@
 //! another GPU allocates, which kills the window's Wayland connection; egui-wgpu then panics while
 //! configuring the surface. Creating the device can fail too: on an Intel Mac, wgpu's check of
 //! indirect draw arguments needs a compute shader the Metal driver couldn't compile, and the device
-//! was lost before the window showed (#334; DesignCraft never draws indirectly, so that check is
+//! was lost before the window showed (#334; STAR Design never draws indirectly, so that check is
 //! off, [`instance_flags`]). Nothing in the process can show a window after that, so when the
 //! graphics fail while the window is starting up, [`finish`] starts the app again without that
 //! adapter, as the next one in the order would be tried. When no adapter of the start's backends
@@ -109,7 +109,7 @@ pub fn preferred_displays(env: Option<PowerPreference>) -> Vec<DisplayGpu> {
 }
 
 /// wgpu's instance flags without its check of indirect draw and dispatch arguments: nothing in
-/// DesignCraft or egui draws indirectly, so the check only costs a compute shader at start-up, one
+/// STAR Design or egui draws indirectly, so the check only costs a compute shader at start-up, one
 /// some drivers can't compile (Metal on an Intel Iris Pro lost the device, #334).
 /// `WGPU_VALIDATION_INDIRECT_CALL=1` turns it back on, like wgpu's other flag variables.
 pub fn instance_flags() -> wgpu::InstanceFlags {

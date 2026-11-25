@@ -20,7 +20,7 @@ pub const PANEL_COMMAND: &str = "window.panel";
 /// The command that selects a tool; a binding on it carries the tool id.
 pub const TOOL_COMMAND: &str = "tool.select";
 
-/// InDesign's default keys for the panels DesignCraft has, where DesignCraft's own defaults leave
+/// InDesign's default keys for the panels STAR Design has, where STAR Design's own defaults leave
 /// the key free.
 const PANEL_KEYS: &[(&str, &str)] = &[
     ("swatches", "F5"),

@@ -41,7 +41,7 @@ pub(crate) fn regular(c: &Color, rgb_only: bool) -> krilla::color::RegularColor 
     match *c {
         Color::Rgb { r, g, b } => R::Rgb(rgb::Color::new(q(r), q(g), q(b))),
         Color::Cmyk { c, m, y, k } => R::Cmyk(cmyk::Color::new(q(c), q(m), q(y), q(k))),
-        // DesignCraft grey is ink coverage (0 = white); PDF DeviceGray is lightness.
+        // STAR Design grey is ink coverage (0 = white); PDF DeviceGray is lightness.
         Color::Gray { k } => R::Luma(luma::Color::new(q(1.0 - k))),
     }
 }

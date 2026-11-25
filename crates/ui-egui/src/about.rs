@@ -1,4 +1,4 @@
-//! Help › About DesignCraft: tabs About · Contributors · Models. About is the splash with the
+//! Help › About STAR Design: tabs About · Contributors · Models. About is the splash with the
 //! ArtCraft mark, version, and community links (Discord first and largest), plus the other ArtCraft
 //! apps; Contributors and Models are the compiled-in credits (`crate::credits`).
 
@@ -158,10 +158,10 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
             let (r, _) = ui.allocate_exact_size(vec2(72.0, 72.0), Sense::hover());
             paint_mark(ui, r, BRAND);
             ui.add_space(6.0);
-            // The channel's own name and version: DesignCraft (stable) or DesignCraft Nightly.
+            // The channel's own name and version: STAR Design (stable) or STAR Design Nightly.
             let channel = crate::channel::current();
             let app_name = match channel {
-                crate::channel::Channel::Stable => crate::i18n::tr(&app.ui.language, "DesignCraft").to_string(),
+                crate::channel::Channel::Stable => crate::i18n::tr(&app.ui.language, "STAR Design").to_string(),
                 crate::channel::Channel::NightlyV1 => channel.name().to_string(),
             };
             ui.label(crate::rtl::widget(ui, egui::RichText::new(app_name).font(semibold(26.0)).color(t.text_strong)));
@@ -190,13 +190,13 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
                     .color(t.text_dim),
             ));
             ui.add_space(16.0);
-            if discord_button(ui, crate::i18n::tr(&app.ui.language, "Join the ArtCraft Discord"), vec2(300.0, 40.0)) {
+            if discord_button(ui, crate::i18n::tr(&app.ui.language, "Portal STAR7 Suite"), vec2(300.0, 40.0)) {
                 open = Some("discord");
             }
             ui.add_space(4.0);
             ui.label(crate::rtl::widget(
                 ui,
-                egui::RichText::new(crate::i18n::tr(&app.ui.language, "discord.gg/artcraft — help, feedback and show-and-tell"))
+                egui::RichText::new(crate::i18n::tr(&app.ui.language, "suite.star-7.app.br — STAR7 Suite"))
                     .size(11.0)
                     .color(t.text_dim),
             ));
@@ -206,7 +206,7 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
                 let w = 330.0;
                 ui.add_space(((ui.available_width() - w) / 2.0).max(0.0));
                 for (text, key) in
-                    [("DesignCraft page", "appPage"), ("GitHub", "github"), ("getartcraft.com", "website"), ("Report an issue", "issues")]
+                    [("STAR Design page", "appPage"), ("suite.star-7.app.br", "website"), ("Report an issue", "issues")]
                 {
                     if link(ui, crate::i18n::tr(&app.ui.language, text), links::get(key).unwrap_or_default(), t.accent) {
                         open = Some(key);

@@ -13,7 +13,7 @@ use crate::export::Sheet;
 
 /// A URL a PDF link annotation may carry. Only ordinary web and mail schemes are written; a
 /// `javascript:`, `data:`, `file:` or custom scheme is left out rather than embedded in the PDF
-/// (audit: DesignCraft #4).
+/// (audit: STAR Design #4).
 fn allowed_link(url: &str) -> Option<&str> {
     designcraft_doc::is_safe_link_url(url).then_some(url)
 }

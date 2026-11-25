@@ -293,7 +293,7 @@ impl DesignApp {
         let layout = opens_as_document(&file.name)
             || matches!(
                 format,
-                Some(craft_file_formats::Format::DesignCraft | craft_file_formats::Format::DesignCraftJson | craft_file_formats::Format::Idml)
+                Some(craft_file_formats::Format::STAR Design | craft_file_formats::Format::STAR DesignJson | craft_file_formats::Format::Idml)
             );
         let place = file.request.purpose == "place"
             || (matches!(file.request.purpose.as_str(), "drop" | "open") && !layout && format != Some(craft_file_formats::Format::Ase));
@@ -326,7 +326,7 @@ impl DesignApp {
     /// A file dropped on the window: documents open, the swatches in a swatch exchange (.ase) file
     /// are loaded, an image loads into the place cursor, and anything else is placed on the spread
     /// in view (a parent spread while parents are being edited). A file without an extension
-    /// opens when its content is a DesignCraft or IDML document.
+    /// opens when its content is a STAR Design or IDML document.
     pub fn open_dropped(&mut self, path: &str) -> Result<Value, String> {
         self.open_dropped_at(path, None)
     }
@@ -583,12 +583,12 @@ pub(crate) fn is_cursor_image(name: &str) -> bool {
     })
 }
 
-/// Files that open as documents (when dropped or picked) rather than being placed: DesignCraft,
+/// Files that open as documents (when dropped or picked) rather than being placed: STAR Design,
 /// IDML, and InDesign documents and templates (converted to IDML on open).
 pub fn opens_as_document(name: &str) -> bool {
     matches!(
         craft_file_formats::detect(name, &[]),
-        Some(craft_file_formats::Format::DesignCraft | craft_file_formats::Format::Idml | craft_file_formats::Format::Indd)
+        Some(craft_file_formats::Format::STAR Design | craft_file_formats::Format::Idml | craft_file_formats::Format::Indd)
     )
 }
 

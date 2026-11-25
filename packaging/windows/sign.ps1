@@ -83,7 +83,7 @@ if (-not $haveCert -and -not $haveAzure) {
 }
 
 $script:SignTool = Find-SignTool
-$common = @('sign', '/v', '/fd', 'SHA256', '/td', 'SHA256', '/d', 'DesignCraft', '/du', 'https://github.com/storytold/designcraft')
+$common = @('sign', '/v', '/fd', 'SHA256', '/td', 'SHA256', '/d', 'STAR Design', '/du', 'https://suite.star-7.app.br')
 $tmp = Join-Path ([IO.Path]::GetTempPath()) "designcraft-sign-$([IO.Path]::GetRandomFileName())"
 New-Item -ItemType Directory -Path $tmp | Out-Null
 
